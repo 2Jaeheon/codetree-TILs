@@ -5,6 +5,7 @@ public class Main {
 
         int N = sc.nextInt();
         int M = sc.nextInt();
+        int num = 1;
 
         int[][] arr = new int[N][M];
         for(int i = 0; i < N; i++){
@@ -18,8 +19,19 @@ public class Main {
             for(int i = 0; i <= k; i++){
                 int row = i;
                 int column = k - i;
-                
+
+                if(row >= 0 && row < N && column >= 0 && column < M){
+                    arr[row][column] = num++;
+                }
             }
         }
+
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < M; j++){
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
     }
 }
