@@ -4,25 +4,27 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         
         int N = sc.nextInt();
-        int[][] arr = new int[N][N];
+        List<List<Integer>> triangle = new ArrayList<>();
 
         for(int i = 0; i < N; i++){
+            List<Integer> row = new ArrayList<>();
             for(int j = 0; j <= i; j++){
-                arr[i][j] = 1;
+                if(j == 0 || j == i){
+                    row.add(1);
+                } else {
+                    int value = triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j);
+                    row.add(value);
+                }
             }
+            triangle.add(row);
         }
 
-        for(int i = 1; i < N; i++){
-            for(int j = 1; j < N; j++){
-                arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
-            }
-        }
-
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j <= i; j++){
-                System.out.print(arr[i][j] + " ");
+        for(List<Integer> row : triangle) {
+            for(int value : row){
+                System.out.print(value + " ");
             }
             System.out.println();
         }
+    
     }
 }
