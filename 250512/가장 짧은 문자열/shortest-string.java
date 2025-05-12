@@ -8,23 +8,12 @@ public class Main {
         int c = sc.next().length();
 
 
-        int max = -1;
-        if(a > b) {
-            max = a;
-        } else if(c > a){
-            max = c;
-        } else {
-            max = b;
-        }
+        int max = 0;
+        int min = 0;
 
-        int min = 10000;
-        if (a > b){
-            min = b;
-        } else if(b > c){
-            min = c; 
-        } else {
-            min = a;
-        }
+        max = Math.max(a, Math.max(b, c));
+        min = Math.min(a, Math.min(b, c));
+    
         System.out.println(max - min);
     }
 }
